@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: marvel-pay-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: marvel-service
+            port:
+              number: 80
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /pay
+        backend:
+          service:
+            name: pay-service
+            port:
+              number: 80

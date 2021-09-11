@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pay-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pay
+  template:
+    metadata: 
+      labels:
+        app: pay
+    spec:
+      containers:
+        - name: pay-container
+          image: smlinux/pay
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pay-service
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+selector:
+  app: pay
+
