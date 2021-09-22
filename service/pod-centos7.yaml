@@ -1,0 +1,10 @@
+# exnternalName test pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: centos
+spec:
+  containers:
+  - image: centos:7
+    name: centos
+    command: ["/bin/sleep", "3650d"]
