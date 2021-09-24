@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rs
+    matchExpressions:
+    - {key: app, operator: In, values: [rs]}
+  template:
+    metadata:
+      labels:
+        app: rs
+    spec:
+      containers:
+      - name: rs-container
+        image: nginx 
