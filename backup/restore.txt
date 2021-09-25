@@ -1,0 +1,2 @@
+ETCDCTL_API=3 etcdctl  --data-dir /var/lib/etcd-from-backup snapshot restore /opt/backup
+# 이후 /etc/kubernetes/manifests/etcd.yaml에서 hostPath name: etcd-data 부분 경로를 위에서 만든 /var/lib/etcd-from-backup으로 수정
