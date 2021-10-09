@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: liveness-pod
+  name: liveness-httpget
 spec:
   containers:
-  - name: liveness-test-container
+  - name: liveness-httpget-container
     image: nginx
     livenessProbe:
       httpGet:

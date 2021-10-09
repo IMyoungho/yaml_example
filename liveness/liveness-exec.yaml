@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-exec
+spec:
+  containers:
+  - name: liveness-exec-containers
+    image: nginx
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /var/log/dpkg.log
