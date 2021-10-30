@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    job-name: pi
+  name: pi
+  namespace: default
+spec:
+  backoffLimit: 4
+  completions: 1
+  parallelism: 1
+  selector:
+    matchLabels:
+      job-name: pi
+  template:
+    metadata:
+      labels:
+        job-name: pi
+    spec:
+      containers:
+      - command:
+        - perl
+        - -Mbignum=bpi
+        - -wle
+        - print bpi(2000)
+        image: perl
+        imagePullPolicy: Always
+        name: pi
+      restartPolicy: Never
+      terminationGracePeriodSeconds: 30

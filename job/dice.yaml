@@ -1,0 +1,22 @@
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dice
+spec:
+  backoffLimit: 5
+  completions: 5
+  parallelism: 7
+  selector:
+    matchLabels:
+      job-name: dice
+  template:
+    metadata:
+      labels:
+        job-name: dice
+    spec:
+      containers:
+      - name: dice-container
+        image: kodekloud/throw-dice
+      restartPolicy: Never
+      terminationGracePeriodSeconds: 30
